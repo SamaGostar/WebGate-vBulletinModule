@@ -55,7 +55,7 @@ class vB_PaidSubscriptionMethod_zarinpalwg extends vB_PaidSubscriptionMethod
 				$cost = unserialize($sub['cost']);				
 				$amount = floor($cost[0][cost][usd]*$this->settings['d2t']);
 				
-				$client = new SoapClient('https://www.zarinpal.com/pg/services/WebGate/wsdl', array('encoding'=>'UTF-8'));
+				$client = new SoapClient('https://de.zarinpal.com/pg/services/WebGate/wsdl', array('encoding'=>'UTF-8'));
 				$res = $client->PaymentVerification(
 					array(
 						'MerchantID'	 => $this->settings['zpmid'] ,
@@ -79,7 +79,7 @@ class vB_PaidSubscriptionMethod_zarinpalwg extends vB_PaidSubscriptionMethod
 	{	
 		if (class_exists('SoapClient')){
 			if(!empty($this->settings['zpmid']) AND !empty($this->settings['d2t'])){
-				$client = new SoapClient('http://www.zarinpalwg.com/WebserviceGateway/wsdl', array('encoding'=>'UTF-8'));
+				$client = new SoapClient('http://de.zarinpal.com/WebserviceGateway/wsdl', array('encoding'=>'UTF-8'));
 				$res = $client->PaymentVerification($this->settings['zpmid'], 1, 1);				
 				if($res != -2)
 					return true;
