@@ -3,7 +3,7 @@
 	$amount = $_POST['zp_amount']; //Amount will be based on Toman
 	$callBackUrl = $_POST['zp_callback_url'];
 	
-	$client = new SoapClient('de://www.zarinpal.com/pg/services/WebGate/wsdl', array('encoding'=>'UTF-8'));
+	$client = new SoapClient('http://de.zarinpal.com/pg/services/WebGate/wsdl', array('encoding'=>'UTF-8'));
 	$res = $client->PaymentRequest(
 	array(
 					'MerchantID' 	=> $merchantID ,
