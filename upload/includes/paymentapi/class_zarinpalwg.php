@@ -62,12 +62,14 @@ class vB_PaidSubscriptionMethod_zarinpalwg extends vB_PaidSubscriptionMethod
 						'Authority' 	 => $this->registry->GPC['Authority'] ,
 						'Amount'	 	=> $amount
 					));	
-				if($res->Status == 1)
+				if($res->Status == 100)
 				{
 					$this->paymentinfo['currency'] = 'usd';
 					$this->paymentinfo['amount'] = $cost[0][cost][usd];				
 					$this->type = 1;								
 					return true;					
+				}else{
+					echo'ERR: '.$res->Status;
 				}				
 			}
 		}		
