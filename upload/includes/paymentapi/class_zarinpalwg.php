@@ -35,11 +35,13 @@ class vB_PaidSubscriptionMethod_zarinpalwg extends vB_PaidSubscriptionMethod
 			$this->error = 'SOAP is not installed';
 			return false;
 		}
+		/*
 		if (!$this->test())
 		{
 			$this->error = 'Payment processor not configured';
 			return false;
 		}
+		*/
 		$this->transaction_id = $this->registry->GPC['Authority'];
 		if(!empty($this->registry->GPC['item']) AND !empty($this->registry->GPC['Authority']))
 		{
@@ -58,7 +60,7 @@ class vB_PaidSubscriptionMethod_zarinpalwg extends vB_PaidSubscriptionMethod
 				$client = new SoapClient('https://de.zarinpal.com/pg/services/WebGate/wsdl', array('encoding'=>'UTF-8'));
 				$res = $client->PaymentVerification(
 					array(
-						'MerchantID'	 => $this->settings['zpmid'] ,
+						'MerchantID'	 => $this->settings['zpmid'],
 						'Authority' 	 => $this->registry->GPC['Authority'],
 						'Amount'	 => $amount
 					));	
@@ -85,9 +87,15 @@ class vB_PaidSubscriptionMethod_zarinpalwg extends vB_PaidSubscriptionMethod
 	{	
 		if (class_exists('SoapClient')){
 			if(!empty($this->settings['zpmid']) AND !empty($this->settings['d2t'])){
-				$client = new SoapClient('http://de.zarinpal.com/WebserviceGateway/wsdl', array('encoding'=>'UTF-8'));
-				$res = $client->PaymentVerification($this->settings['zpmid'], 1, 1);				
-				if($res != -2)
+				$client = new SoapClient('https://de.zarinpal.com/pg/services/WebGate/wsdl', array('encoding' => 'UTF-8'));
+				$res = $client->PaymentVerification(
+					array(
+						'MerchantID'	 => $this->settings['zpmid'],
+						'Authority' 	 => 1,
+						'Amount'	 => 1
+					));
+				
+				if($res->Status == 100)
 					return true;
 			}
 		}
