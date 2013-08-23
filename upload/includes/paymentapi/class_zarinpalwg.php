@@ -49,7 +49,7 @@ class vB_PaidSubscriptionMethod_zarinpalwg extends vB_PaidSubscriptionMethod
 				INNER JOIN " . TABLE_PREFIX . "user AS user USING (userid)
 				WHERE hash = '" . $this->registry->db->escape_string($this->registry->GPC['item']) . "'
 			");
-			if (!empty($this->paymentinfo) && $this->registry->GPC['Status'] == "OK")
+			if (!empty($this->paymentinfo) && $this->registry->GPC['Status'] == 'OK')
 			{
 				$sub = $this->registry->db->query_first("SELECT * FROM " . TABLE_PREFIX . "subscription WHERE subscriptionid = " . $this->paymentinfo['subscriptionid']);
 				$cost = unserialize($sub['cost']);				
@@ -59,8 +59,8 @@ class vB_PaidSubscriptionMethod_zarinpalwg extends vB_PaidSubscriptionMethod
 				$res = $client->PaymentVerification(
 					array(
 						'MerchantID'	 => $this->settings['zpmid'] ,
-						'Authority' 	 => $this->registry->GPC['Authority'] ,
-						'Amount'	 	=> $amount
+						'Authority' 	 => $this->registry->GPC['Authority'],
+						'Amount'	 => $amount
 					));	
 				if($res->Status == 100)
 				{
@@ -68,9 +68,13 @@ class vB_PaidSubscriptionMethod_zarinpalwg extends vB_PaidSubscriptionMethod
 					$this->paymentinfo['amount'] = $cost[0][cost][usd];				
 					$this->type = 1;								
 					return true;					
-				}else{
-					echo'ERR: '.$res->Status;
+				} else {
+					$this->error = 'ERR: '. $res->Status;
+					return false;
 				}				
+			} else {
+				$this->error = 'Invalid trasaction';
+				return false;	
 			}
 		}		
 		$this->error = 'Duplicate transaction.';
@@ -105,11 +109,11 @@ class vB_PaidSubscriptionMethod_zarinpalwg extends vB_PaidSubscriptionMethod
 		
 		$templater = vB_Template::create('subscription_payment_zarinpalwg');
 	     	$templater->register('merchantID', $merchantID);
-			$templater->register('cost', $cost);
-			$templater->register('item', $item);					
-			$templater->register('subinfo', $subinfo);
-			$templater->register('settings', $settings);
-			$templater->register('userinfo', $userinfo);
+		$templater->register('cost', $cost);
+		$templater->register('item', $item);					
+		$templater->register('subinfo', $subinfo);
+		$templater->register('settings', $settings);
+		$templater->register('userinfo', $userinfo);
 		$form['hiddenfields'] .= $templater->render();
 		return $form;
 	}
