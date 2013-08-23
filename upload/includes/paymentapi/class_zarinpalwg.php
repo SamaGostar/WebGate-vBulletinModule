@@ -87,16 +87,7 @@ class vB_PaidSubscriptionMethod_zarinpalwg extends vB_PaidSubscriptionMethod
 	{	
 		if (class_exists('SoapClient')){
 			if(!empty($this->settings['zpmid']) AND !empty($this->settings['d2t'])){
-				$client = new SoapClient('https://de.zarinpal.com/pg/services/WebGate/wsdl', array('encoding' => 'UTF-8'));
-				$res = $client->PaymentVerification(
-					array(
-						'MerchantID'	 => $this->settings['zpmid'],
-						'Authority' 	 => 1,
-						'Amount'	 => 1
-					));
-				
-				if($res->Status == 100)
-					return true;
+				return true;
 			}
 		}
 		return false;
