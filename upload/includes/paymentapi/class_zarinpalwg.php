@@ -36,13 +36,13 @@ class vB_PaidSubscriptionMethod_zarinpalwg extends vB_PaidSubscriptionMethod
 			$this->error = 'SOAP is not installed';
 			return false;
 		}
-		/*
+		
 		if (!$this->test())
 		{
 			$this->error = 'Payment processor not configured';
 			return false;
 		}
-		*/
+		
 		$this->transaction_id = $this->registry->GPC['Authority'];
 		if(!empty($this->registry->GPC['item']) AND !empty($this->registry->GPC['Authority']))
 		{
