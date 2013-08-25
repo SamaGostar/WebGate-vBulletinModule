@@ -26,8 +26,9 @@ class vB_PaidSubscriptionMethod_zarinpalwg extends vB_PaidSubscriptionMethod
 	function verify_payment()
 	{		
 		$this->registry->input->clean_array_gpc('r', array(
-			'item'    => TYPE_STR,			
-			'au'    => TYPE_STR
+			'item'		=> TYPE_STR,			
+			'Authority'	=> TYPE_STR,
+			'Status'	=> TYPE_STR
 		));  
 		
 		if (!class_exists('SoapClient'))
