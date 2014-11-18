@@ -79,9 +79,10 @@ class vB_PaidSubscriptionMethod_zarinpalwg extends vB_PaidSubscriptionMethod
 				$this->error = 'Invalid trasaction';
 				return false;	
 			}
-		}		
-		$this->error = 'Duplicate transaction.';
-		return false;
+		}else{		
+			$this->error = 'Duplicate transaction.';
+			return false;
+		}
     }
 
 	function test()
