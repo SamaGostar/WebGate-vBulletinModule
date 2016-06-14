@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<product productid="zarinpalwg_api" active="1">
+<product productid="zarinpalzg_api" active="1">
 	<title>zarinpal ZarinGate Payment Module</title>
-	<description>This product add a zarinpalwg module for the payment APIs</description>
+	<description>This product add a zarinpalzg module for the payment APIs</description>
 	<version>4.X.X</version>
 	<url><![CDATA[http://www.nixweb.ir]]></url>
 	<versioncheckurl><![CDATA[http://www.nixweb.ir]]></versioncheckurl>
@@ -51,9 +51,9 @@ $apisettings = array(
 );
 
 $api = array(
-	"title" => "zarinpalwg",
+	"title" => "zarinpalzg",
 	"active" => 1,
-	"classname" => "zarinpalwg",
+	"classname" => "zarinpalzg",
 	"currency" => "usd",
 	"recurring" => 0,
 	"settings" => serialize($apisettings),
@@ -98,16 +98,16 @@ function toggle_subs()
 }
 
 $db->hide_errors();
-$db->query_write("DELETE FROM " . TABLE_PREFIX . "paymentapi WHERE classname = 'zarinpalwg'");
+$db->query_write("DELETE FROM " . TABLE_PREFIX . "paymentapi WHERE classname = 'zarinpalzg'");
 toggle_subs();
 $db->show_errors();]]></uninstallcode>
 		</code>
 	</codes>
 	<templates>
-	<template name="subscription_payment_zarinpalwg" templatetype="template" date="1294078080" username="admin" version="1.0"><![CDATA[
+	<template name="subscription_payment_zarinpalzg" templatetype="template" date="1294078080" username="admin" version="1.0"><![CDATA[
 <input type="hidden" name="zp_mid" value="{vb:raw merchantID}" /> 
 <input type="hidden" name="zp_comments" value="{vb:rawphrase x_subscription, {vb:raw subinfo.title}} by {vb:raw userinfo.username}" /> 
-<input type="hidden" name="zp_callback_url" value="{vb:raw vboptions.bburl}/payment_gateway.php?method=zarinpalwg&item={vb:raw item}" /> 
+<input type="hidden" name="zp_callback_url" value="{vb:raw vboptions.bburl}/payment_gateway.php?method=zarinpalzg&item={vb:raw item}" /> 
 <input type="hidden" name="zp_amount" value="{vb:raw cost}" /> 
 	]]></template>
 	</templates>
@@ -115,12 +115,12 @@ $db->show_errors();]]></uninstallcode>
 	</plugins>
 	<phrases>
 		<phrasetype name="Subscription Tools" fieldname="subscription">
-			<phrase name="zarinpalwg" date="1294078080" username="admin" version="1.0"><![CDATA[zarinpalwg]]></phrase>
-			<phrase name="zarinpalwg_order_instructions" date="1294078080" username="admin" version="1.00"><![CDATA[To pay for your subscription using <a href="http://www.zarinpalwg.com" target="_blank">zarinpalwg</a> click the button below and follow the onscreen instructions.]]></phrase>
-			<phrase name="setting_zarinpalwg_zpmid_desc" date="1294078080" username="admin" version="1.00"><![CDATA[Please enter your zarinpalwg Merchant ID]]></phrase>
-			<phrase name="setting_zarinpalwg_zpmid_title" date="1294078080" username="admin" version="1.00"><![CDATA[zarinpalwg Merchant ID]]></phrase>
-			<phrase name="setting_zarinpalwg_d2t_desc" date="1294078080" username="admin" version="1.00"><![CDATA[Please enter Currency conversion rate to Toman]]></phrase>
-			<phrase name="setting_zarinpalwg_d2t_title" date="1294078080" username="admin" version="1.00"><![CDATA[Currency exchange rate]]></phrase>
+			<phrase name="zarinpalzg" date="1294078080" username="admin" version="1.0"><![CDATA[zarinpalzg]]></phrase>
+			<phrase name="zarinpalzg_order_instructions" date="1294078080" username="admin" version="1.00"><![CDATA[To pay for your subscription using <a href="http://www.zarinpalzg.com" target="_blank">zarinpalzg</a> click the button below and follow the onscreen instructions.]]></phrase>
+			<phrase name="setting_zarinpalzg_zpmid_desc" date="1294078080" username="admin" version="1.00"><![CDATA[Please enter your zarinpalzg Merchant ID]]></phrase>
+			<phrase name="setting_zarinpalzg_zpmid_title" date="1294078080" username="admin" version="1.00"><![CDATA[zarinpalzg Merchant ID]]></phrase>
+			<phrase name="setting_zarinpalzg_d2t_desc" date="1294078080" username="admin" version="1.00"><![CDATA[Please enter Currency conversion rate to Toman]]></phrase>
+			<phrase name="setting_zarinpalzg_d2t_title" date="1294078080" username="admin" version="1.00"><![CDATA[Currency exchange rate]]></phrase>
 		</phrasetype>
 	</phrases>
 	<options>
