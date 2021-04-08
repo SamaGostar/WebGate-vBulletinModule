@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<product productid="zarinpalqr_api" active="1">
-	<title>zarinpalQR Payment Module</title>
+<product productid="zarinpalwg_api" active="1">
+	<title>zarinpalPayment Module</title>
 	<description>This product add a zarinpal module for the payment APIs</description>
 	<version>4.X.X</version>
 	<url><![CDATA[https://www.zarinpal.com]]></url>
@@ -51,9 +51,9 @@ $apisettings = array(
 );
 
 $api = array(
-	"title" => "zarinpalqr",
+	"title" => "zarinpalwg",
 	"active" => 1,
-	"classname" => "zarinpalqr",
+	"classname" => "zarinpalwg",
 	"currency" => "usd",
 	"recurring" => 0,
 	"settings" => serialize($apisettings),
@@ -98,16 +98,16 @@ function toggle_subs()
 }
 
 $db->hide_errors();
-$db->query_write("DELETE FROM " . TABLE_PREFIX . "paymentapi WHERE classname = 'zarinpalqr'");
+$db->query_write("DELETE FROM " . TABLE_PREFIX . "paymentapi WHERE classname = 'zarinpalwg'");
 toggle_subs();
 $db->show_errors();]]></uninstallcode>
 		</code>
 	</codes>
 	<templates>
-	<template name="subscription_payment_zarinpalqr" templatetype="template" date="1294078080" username="admin" version="1.0"><![CDATA[
+	<template name="subscription_payment_zarinpalwg" templatetype="template" date="1294078080" username="admin" version="1.0"><![CDATA[
 <input type="hidden" name="zp_mid" value="{vb:raw merchantID}" /> 
 <input type="hidden" name="zp_comments" value="{vb:rawphrase x_subscription, {vb:raw subinfo.title}} by {vb:raw userinfo.username}" /> 
-<input type="hidden" name="zp_callback_url" value="{vb:raw vboptions.bburl}/payment_gateway.php?method=zarinpalqr&item={vb:raw item}" /> 
+<input type="hidden" name="zp_callback_url" value="{vb:raw vboptions.bburl}/payment_gateway.php?method=zarinpalwg&item={vb:raw item}" /> 
 <input type="hidden" name="zp_amount" value="{vb:raw cost}" /> 
 	]]></template>
 	</templates>
@@ -115,12 +115,12 @@ $db->show_errors();]]></uninstallcode>
 	</plugins>
 	<phrases>
 		<phrasetype name="Subscription Tools" fieldname="subscription">
-			<phrase name="zarinpalqr" date="1294078080" username="admin" version="1.0"><![CDATA[zarinpalqr]]></phrase>
-			<phrase name="zarinpalqr_order_instructions" date="1294078080" username="admin" version="1.00"><![CDATA[To pay for your subscription using <a href="http://www.zarinpalqr.com" target="_blank">zarinpalqr</a> click the button below and follow the onscreen instructions.]]></phrase>
-			<phrase name="setting_zarinpalqr_zpmid_desc" date="1294078080" username="admin" version="1.00"><![CDATA[Please enter your zarinpalqr Merchant ID]]></phrase>
-			<phrase name="setting_zarinpalqr_zpmid_title" date="1294078080" username="admin" version="1.00"><![CDATA[zarinpalqr Merchant ID]]></phrase>
-			<phrase name="setting_zarinpalqr_d2t_desc" date="1294078080" username="admin" version="1.00"><![CDATA[Please enter Currency conversion rate to Toman]]></phrase>
-			<phrase name="setting_zarinpalqr_d2t_title" date="1294078080" username="admin" version="1.00"><![CDATA[Currency exchange rate]]></phrase>
+			<phrase name="zarinpalwg" date="1294078080" username="admin" version="1.0"><![CDATA[zarinpalwg]]></phrase>
+			<phrase name="zarinpalwg_order_instructions" date="1294078080" username="admin" version="1.00"><![CDATA[To pay for your subscription using <a href="http://www.zarinpalwg.com" target="_blank">zarinpalwg</a> click the button below and follow the onscreen instructions.]]></phrase>
+			<phrase name="setting_zarinpalwg_zpmid_desc" date="1294078080" username="admin" version="1.00"><![CDATA[Please enter your zarinpalwg Merchant ID]]></phrase>
+			<phrase name="setting_zarinpalwg_zpmid_title" date="1294078080" username="admin" version="1.00"><![CDATA[zarinpalwg Merchant ID]]></phrase>
+			<phrase name="setting_zarinpalwg_d2t_desc" date="1294078080" username="admin" version="1.00"><![CDATA[Please enter Currency conversion rate to Toman]]></phrase>
+			<phrase name="setting_zarinpalwg_d2t_title" date="1294078080" username="admin" version="1.00"><![CDATA[Currency exchange rate]]></phrase>
 		</phrasetype>
 	</phrases>
 	<options>
