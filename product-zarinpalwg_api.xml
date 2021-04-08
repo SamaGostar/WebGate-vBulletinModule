@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <product productid="zarinpalwg_api" active="1">
-	<title>zarinpal ZarinGate Payment Module</title>
-	<description>This product add a zarinpalwg module for the payment APIs</description>
+	<title>zarinpalPayment Module</title>
+	<description>This product add a zarinpal module for the payment APIs</description>
 	<version>4.X.X</version>
-	<url><![CDATA[http://www.nixweb.ir]]></url>
-	<versioncheckurl><![CDATA[http://www.nixweb.ir]]></versioncheckurl>
+	<url><![CDATA[https://www.zarinpal.com]]></url>
+	<versioncheckurl><![CDATA[https://www.zarinpal.com]]></versioncheckurl>
 	<dependencies>
 	</dependencies>
 
