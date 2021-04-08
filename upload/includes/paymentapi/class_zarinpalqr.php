@@ -18,7 +18,7 @@ if (!isset($GLOBALS['vbulletin']->db))
  * @version	$Revision: 20000 $
  * @date		$Date: 2012-03-25 01:24:45 +0350 (Sun, 25 March 2012) $
  */
-class vB_PaidSubscriptionMethod_zarinpalwg extends vB_PaidSubscriptionMethod
+class vB_PaidSubscriptionMethod_zarinpalqr extends vB_PaidSubscriptionMethod
 {
     var $supports_recurring = false;
     var $display_feedback = true;
@@ -107,12 +107,12 @@ class vB_PaidSubscriptionMethod_zarinpalwg extends vB_PaidSubscriptionMethod
         $cost = floor($cost*$this->settings['d2t']);
         $merchantID = $this->settings['zpmid'];
 
-        $form['action'] = 'zarinpalwg.php';
+        $form['action'] = 'zarinpalqr.php';
         $form['method'] = 'POST';
 
         $settings =& $this->settings;
 
-        $templater = vB_Template::create('subscription_payment_zarinpalwg');
+        $templater = vB_Template::create('subscription_payment_zarinpalqr');
         $templater->register('merchantID', $merchantID);
         $templater->register('cost', $cost);
         $templater->register('item', $item);
